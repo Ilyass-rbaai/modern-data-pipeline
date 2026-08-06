@@ -1,6 +1,4 @@
-SET search_path TO ecommerce;
-
-CREATE TABLE customers (
+CREATE TABLE ecommerce.customers (
     customer_id SERIAL PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
@@ -10,7 +8,7 @@ CREATE TABLE customers (
     signup_date DATE NOT NULL
 );
 
-CREATE TABLE products (
+CREATE TABLE ecommerce.products (
     product_id SERIAL PRIMARY KEY,
     product_name VARCHAR(255) NOT NULL,
     category VARCHAR(100),
@@ -18,14 +16,14 @@ CREATE TABLE products (
     stock INT DEFAULT 0
 );
 
-CREATE TABLE orders (
+CREATE TABLE ecommerce.orders (
     order_id SERIAL PRIMARY KEY,
     customer_id INT NOT NULL,
     order_date TIMESTAMP NOT NULL,
     status VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE order_items (
+CREATE TABLE ecommerce.order_items (
     order_item_id SERIAL PRIMARY KEY,
     order_id INT NOT NULL,
     product_id INT NOT NULL,
@@ -33,7 +31,7 @@ CREATE TABLE order_items (
     price NUMERIC(10,2) NOT NULL
 );
 
-CREATE TABLE payments (
+CREATE TABLE ecommerce.payments (
     payment_id SERIAL PRIMARY KEY,
     order_id INT NOT NULL,
     payment_method VARCHAR(50),

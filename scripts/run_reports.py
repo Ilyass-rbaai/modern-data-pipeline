@@ -7,8 +7,10 @@ from config import DATABASE_URL
 
 engine = create_engine(DATABASE_URL)
 
-SQL_DIR = Path(__file__).resolve().parent.parent / "postgres" / "reports"
-OUTPUT_DIR = Path(__file__).resolve().parent.parent / "reports"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+SQL_DIR = PROJECT_ROOT / "reports"
+OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
 OUTPUT_DIR.mkdir(exist_ok=True)
 
@@ -17,9 +19,9 @@ queries = [
     "monthly_revenue",
     "top_products",
     "best_customers",
-    "avg_order_value",
+    "average_order_value",
     "daily_sales",
-    "revenue_by_country",
+    "sales_by_country",
     "revenue_by_category",
 ]
 
@@ -40,7 +42,7 @@ def run_reports():
 
         df.to_csv(output, index=False)
 
-        print(f"✓ {report} saved")
+        print(f"{report} saved to {output}")
 
 
 if __name__ == "__main__":

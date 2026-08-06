@@ -15,11 +15,11 @@ PAYMENTS_FILE = DATA_DIR / "payments.csv"
 
 DB_HOST = "postgres"
 DB_PORT = 5432
-DB_NAME = "pipeline_db"
+DB_NAME = "airflow"
 DB_USER = "airflow"
 DB_PASSWORD = "airflow"
 
 DATABASE_URL = (
     f"postgresql://{DB_USER}:{DB_PASSWORD}"
-    f"@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    f"@{DB_HOST}:{DB_PORT}/airflow"
 )
